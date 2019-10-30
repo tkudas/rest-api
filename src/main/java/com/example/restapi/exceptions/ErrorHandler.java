@@ -1,4 +1,4 @@
-package com.example.restapi.exeptions;
+package com.example.restapi.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,8 +13,8 @@ import java.util.Arrays;
 @ControllerAdvice
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({UsersNotFoundExeption.class})
-    public ResponseEntity<Object> handleWebException(UsersNotFoundExeption e, WebRequest webRequest) {
+    @ExceptionHandler({UsersNotFoundException.class})
+    public ResponseEntity<Object> handleWebException(UsersNotFoundException e, WebRequest webRequest) {
         System.err.println(Arrays.toString(e.getStackTrace()));
         return handleExceptionInternal(e, e.getMessage(), HttpHeaders.EMPTY, HttpStatus.BAD_REQUEST, webRequest);
     }

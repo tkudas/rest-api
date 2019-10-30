@@ -2,11 +2,10 @@ package com.example.restapi.controller;
 
 import com.example.restapi.domain.User;
 import com.example.restapi.domain.UserExt;
-import com.example.restapi.exeptions.UsersNotFoundExeption;
+import com.example.restapi.exceptions.UsersNotFoundException;
 import com.example.restapi.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,7 +27,7 @@ public class UserController {
     @GetMapping
     ResponseEntity<?> getAllUsers() {
         List<User> userList = userService.findAllUser();
-        if (userList.isEmpty()) throw new UsersNotFoundExeption();
+        if (userList.isEmpty()) throw new UsersNotFoundException();
         return ResponseEntity.ok(userExtendedToBirthsday(userList));
     }
 
