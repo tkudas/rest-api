@@ -24,7 +24,7 @@ spring.datasource.url=jdbc:mysql://192.168.99.100:3306/db_users
 
 spring.datasource.username=root
 
-spring.datasource.password=
+spring.datasource.password=myPassword
 
 
 
