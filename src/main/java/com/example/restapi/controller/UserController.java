@@ -28,7 +28,7 @@ public class UserController {
     ResponseEntity<?> getAllUsers() {
         List<User> userList = userService.findAllUser();
         if (userList.isEmpty()) throw new UsersNotFoundException();
-        return ResponseEntity.ok(userExtendedToBirthsday(userList));
+        return ResponseEntity.ok(userExtendedToBirthday(userList));
     }
 
     @PostMapping
@@ -37,7 +37,7 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    private List<UserExt> userExtendedToBirthsday(List<User> userList) {
+    private List<UserExt> userExtendedToBirthday(List<User> userList) {
         List<UserExt> userListExt = new ArrayList<>();
         for (User user : userList) {
             UserExt userExt = new UserExt();
