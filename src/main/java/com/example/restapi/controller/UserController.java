@@ -6,6 +6,7 @@ import com.example.restapi.exceptions.UsersNotFoundException;
 import com.example.restapi.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,7 +34,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@Valid @RequestBody User user) {
+    public User addUser(@Valid @RequestBody User user, BindingResult bindingResult) {
         return userService.addUser(user);
     }
 
@@ -46,8 +47,7 @@ public class UserController {
             userExt.setPesel(user.getPesel());
             userExt.setBirthdate(convertPeselToData(user.getPesel()));
             userListExt.add(userExt);
-        }
-        ;
+        };
         return userListExt;
     }
 
