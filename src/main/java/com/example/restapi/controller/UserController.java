@@ -34,8 +34,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@Valid @RequestBody User user, BindingResult bindingResult) {
-
+    public User addUser(@Valid @RequestBody User user) {
         return userService.addUser(user);
     }
 
