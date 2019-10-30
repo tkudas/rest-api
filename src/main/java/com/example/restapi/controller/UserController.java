@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @GetMapping
-    ResponseEntity<?> getAllUsers() {
+    public ResponseEntity<?> getAllUsers() {
         List<User> userList = userService.findAllUser();
         if (userList.isEmpty()) throw new UsersNotFoundException();
         return ResponseEntity.ok(userExtendedToBirthday(userList));
